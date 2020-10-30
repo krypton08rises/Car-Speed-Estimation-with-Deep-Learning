@@ -1,16 +1,16 @@
 # Car Speed Estimation with Deep Learning
 
-##Problem Statement : 
+## Problem Statement : 
 Estimate vehicle speed using Traffic cameras without calibrating pixel scale. 
 
-##Libraries Used : 
+## Libraries Used : 
 - tensorflow
 - tensornets
 - opencv
 - numpy 
 - matplotlib
 
-##Solution : 
+## Solution : 
 
 ### Assumptions :
 - The first assumption is that the white markings separating various lanes is of a fixed length of 1.5 meters.__[source](http://www.ctp.gov.in/RoadMarkings.htm)__
