@@ -20,19 +20,19 @@ Estimate vehicle speed using Traffic cameras without calibrating pixel scale.
 
 
 ### Estimating Time :
-1. gen_frames.py:
+1. __gen_frames.py__
 - Although this script is not explicitly required, it was used to calculate the frame rate used(Total time/total frames)
 - Additionally, any of the frames generated can be used with detect_road.py(but prefer a frame with empty road)
 
 ### Estimating Distance :
-1. detect_road.py:
+1. __detect_road.py__
 - A single frame is passed to the script.
 - Triangles are cut through this frame extracting only the road and its white markings. 
-- The resultant image is converted to grayscale, then the noise is reduced by using gaussian blur, and the white markings are generated using Canny edge detection. __(opencv)__
+- The resultant image is converted to grayscale, then the noise is reduced by using gaussian blur, and the white markings are generated using Canny edge detection, houghlines transform . __(opencv)__
 - Finally these lines are passed to main script.
 - Please note that the lines selected may warry for different frames run, so try to use the same frame.
 
-2. main.py:
+2. __main.py__
 - This script relies on pretrained YoloV3 for vehicle detection.
 - This yolo is run on a smaller resolution (416, 416) and detects 5 classes namely - __'bicycle', 'car', 'bike', 'bus' and 'truck'__.
 - As the frames are captured, the image is resized, preprocessed and Yolo predicts the bounding boxes. 
@@ -43,5 +43,5 @@ Estimate vehicle speed using Traffic cameras without calibrating pixel scale.
 - Since we know the distance between these 4 lines, we track the number of frames passed between the starting line and the ending line and hence calculate the velocity. 
 
 ## Resources:
-- The YoloV3 (pretrained) is used in main.py and the script is inspired from __[this article from towards data science](https://towardsdatascience.com/track-vehicles-and-people-using-yolov3-and-tensorflow-4f3d0e5b1b5f?gi=2094c76c1536)__
+- The YoloV3 (pretrained) used in main.py is inspired from __[this article from towardsdatascience](https://towardsdatascience.com/track-vehicles-and-people-using-yolov3-and-tensorflow-4f3d0e5b1b5f?gi=2094c76c1536)__
 - The white markings detected using canny edge detection, houghlines transform is inspired from __[this medium article](https://medium.com/@mrhwick/simple-lane-detection-with-opencv-bfeb6ae54ec0)__.
